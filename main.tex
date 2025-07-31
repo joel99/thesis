@@ -111,15 +111,15 @@ Submitted in partial fulfillment of the requirements for the Degree of Doctor of
 
 \vspace*{\stretch{1}}
 \end{titlepage}
-\pagenumbering{roman}
+\pagenumbering{arabic}
 
 \section*{Abstract}
 \addcontentsline{toc}{section}{Abstract}
 The increasing ambition of neuroscience and neurotechnology both entails and requires vast troves of neural data. To operate effectively on neural data at scale, neural data science must in turn develop frameworks that can precisely and robustly model broad and heterogeneous data. This task could potentially be made tractable with deep learning (DL), which in the last decade has not only become a foundational tool in artificial intelligence (AI), but has also seen growing adoption in the natural sciences. This proposal advances this program in the domain of sensorimotor intracortical brain-computer interfaces (iBCI), which seek to connect a user’s neural activity with their bodily state. Currently, by modeling small datasets of paired motor cortical activity and behavioral intention, experimenters can calibrate iBCIs that show remarkable potential in allowing users to control robotic limbs. Analogously, experimenters can also provide targeted tactile sensations by applying intracortical microstimulation (ICMS) to somatosensory cortex. However, real-world adoption of sensorimotor BCIs will require translating this potential into a system that is exquisitely reliable and convenient.
 The challenge of building such a system is precisely that of operating effectively on BCI data at scale.
-% That is, by reframing the accumulation of BCI datasets throughout device lifetime not as standalone snapshots but as a landscape of related data,
-% deep learning becomes an  provide a tractable platform with which to encapsulate this landscape.
 Therefore, this challenge might be best met with deep learning models that encapsulate the landscape of data accumulated throughout the BCI device's lifetime.
+% deep learning becomes an  provide a tractable platform with which to encapsulate this landscape.
+% That is, by reframing the accumulation of BCI datasets throughout device lifetime not as standalone snapshots but as a landscape of related data,
 %  reframe BCI data not as a collection of standalone datasets but as a store of related data accumulated throughout the BCI device's lifetime.
 I next introduce one result and two proposed works that build this case.
 
@@ -149,7 +149,7 @@ Sensory feedback is integral to native motor control, and can be provided in iBC
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\linewidth]{ch1_bci_loop.png}
-  \caption{Will probably redraw this for more aesthetic simplicity, but this is basically what I want to show.}
+  \caption{Brain-computer interface control loop.}
   \label{fig:bci_loop}
 \end{figure}
 
@@ -318,12 +318,12 @@ DELETE outperforms baselines for peri-stim recovery and preserves high-SNR spike
 % Schedule
 % =========================
 \chapter{Schedule}
-Aim~3 started first but paused for dataset aggregation work. Next steps: collect NDT-control data and write results; then finish DELETE and ICMS taxonomy as two publications.
+Aim 3 was the project I began my doctoral research with, but was put on hiatus to resolve the question of how to aggregate neural datasets (Aim 1). In the remaining time, I aim to first perform data collection for NDT-control experiments (Aim 2) and write up the results. I will then focus on completing Aim 3, which is both the artifact removal work and the ICMS response taxonomy work, in two separate publications.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\linewidth]{ch5_schedule_gantt.png}
-  \caption{High-level schedule/Gantt (placeholder: \texttt{figures/schedule\_gantt.png}).}
+  \includegraphics[width=1.0\linewidth]{ch5_schedule_gantt.png}
+  \caption{Gantt chart overview of project priorities throughout the PhD.}
   \label{fig:schedule}
 \end{figure}
 
