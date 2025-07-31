@@ -18,9 +18,18 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{titlesec}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
 % Minimal approach - let LaTeX handle TOC normally
 \usepackage{csquotes}
 \usepackage[style=numeric,natbib=true]{biblatex}
+
+
+\NewDocumentCommand{\scsurname}{m m o}{%
+  #1~\textsc{#2}%
+  \IfValueT{#3}{\space #3}%
+}
 
 \addbibresource{references.bib}
 
@@ -36,19 +45,22 @@
 % ---------- Title Info ----------
 \newcommand{\proposaltitle}{Deep Learning for Scalable Sensorimotor Brain-Computer Interfaces}
 \newcommand{\authorname}{\textbf{Joel Ye}}
-\newcommand{\department}{Neural Computation \& Machine Learning}
-\newcommand{\university}{Carnegie Mellon University}
+\newcommand{\department}{
+  Neural Computation, Neuroscience Institute \\
+  Machine Learning Department, School of Computer Science \\
+}
+\newcommand{\university}{Carnegie Mellon University \\ Pittsburgh, PA}
 \newcommand{\proposaldate}{July 30, 2025}
 
 % ---------- Committee Macro ----------
 \newcommand{\committee}{
-\begin{itemize}[leftmargin=1.2em]
-  \item Robert Gaunt (co-chair)
-  \item Leila Wehbe (co-chair)
-  \item Jennifer Collinger
-  \item Aran Nayebi
-  \item Chethan Pandarinath
-\end{itemize}
+  \begin{center}
+    \scsurname{Robert}{Gaunt}[({co-chair})] \\
+    \scsurname{Leila}{Wehbe}[({co-chair})] \\
+    \scsurname{Jennifer}{Collinger} \\
+    \scsurname{Aran}{Nayebi} \\
+    \scsurname{Chethan}{Pandarinath}[({Emory University})]
+  \end{center}
 }
 
 % ---------- Convenience ----------
@@ -61,13 +73,24 @@
   \centering
   {\LARGE \textbf{\proposaltitle}\par}
   \vspace{1em}
-  {\Large Thesis Proposal\par}
+  {\Large PhD Thesis Proposal\par}
+  {\proposaldate\par}
   \vspace{2em}
   {\large \authorname\par}
+  \vspace{2em}
+
+  {\normalsize \department\par}
+  {\normalsize \university\par}
+
+  \vspace{2em}
+
+  {\large Thesis Committee:\par}
+  \vspace{0.5em}
+  \committee
+
   \vfill
-  {\large \department\par}
-  {\large \university\par}
-  {\large \proposaldate\par}
+  \vspace{2em}
+  {\small \textit{Submitted in partial fulfillment of the requirements for the Degree of Doctor of Philosophy}\par}
 \end{titlepage}
 
 \pagenumbering{roman}
