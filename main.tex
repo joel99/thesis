@@ -17,36 +17,9 @@
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{enumitem}
 \usepackage{xcolor}
-\usepackage{titlesec}
-\usepackage{titletoc}
-
-% Remove the word "Chapter" in headings while keeping numbering
-\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter}{1em}{}
-\titlespacing*{\chapter}{0pt}{-1ex}{2.5ex}
-
-% Correct titletoc definitions
-\titlecontents{chapter}
-  [0em]                                   % left indent
-  {\vspace{1ex}\bfseries}                 % above-code / formatting
-  {\contentslabel{2.5em}}                 % numbered-entry format (reserve space for "1")
-  {}                                       % numberless-entry format
-  {\titlerule*[0.5em]{.}\contentspage}    % filler & page number
-
-\titlecontents{section}
-  [1.5em]
-  {}
-  {\contentslabel{2.5em}}
-  {}
-  {\titlerule*[0.5em]{.}\contentspage}
-
-\titlecontents{subsection}
-  [3.5em]
-  {}
-  {\contentslabel{3.2em}}
-  {}
-  {\titlerule*[0.5em]{.}\contentspage}
+% Minimal approach - let LaTeX handle TOC normally
 \usepackage{csquotes}
-\usepackage[style=numeric]{biblatex}
+\usepackage[style=numeric,natbib=true]{biblatex}
 
 \addbibresource{references.bib}
 
@@ -93,8 +66,8 @@
 
 \pagenumbering{roman}
 
-\chapter*{Abstract}
-\addcontentsline{toc}{chapter}{Abstract}
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
 The increasing ambition of neuroscience and neurotechnology both entails and requires vast troves of neural data. To operate effectively on neural data at scale, neural data science must in turn develop frameworks that can precisely and robustly model broad and heterogeneous data. This task could potentially be made tractable with deep learning (DL), which in the last decade has not only become a foundational tool in artificial intelligence (AI), but has also seen growing adoption in the natural sciences. This proposal advances this program in the domain of sensorimotor intracortical brain--computer interfaces (iBCI), which seek to associate a user’s neural activity with their bodily state. Currently, by collecting small datasets of paired motor cortical activity and behavioral intention, experimenters can calibrate iBCIs that show remarkable potential in allowing users to control robotic limbs. Analogously, experimenters can also provide targeted tactile sensations by applying intracortical microstimulation (ICMS) to somatosensory cortex. However, adoption of these strategies for real-world BCI use cases will hinge on capability, reliability, and convenience. I describe one result and two proposals for meeting these requirements by encapsulating scaled data collection with deep learning methods.
 
 % Table of contents
@@ -191,7 +164,7 @@ NDT2 demonstrates transfer across sessions/subjects/tasks via population patchin
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\linewidth]{ch2_trialized.png}
-  \caption{Models are evaluated on a human open-loop cursor dataset prepared in two ways. Trialized training receives inputs according to trial boundaries, varying from 2-4 seconds in length. Continuous training receives random 1 second snippets (that can cross trial boundaries). Trialized evaluation matches trialized training, and continuous evaluation is done by streaming up to 1 second of history. ▼ indicates points below 0.0. Continuously trained models perform well in both evaluation settings, while models trained on trialized data fail in continuous evaluation.}
+  \caption{Models are evaluated on a human open-loop cursor dataset prepared in two ways. Trialized training receives inputs according to trial boundaries, varying from 2-4 seconds in length. Continuous training receives random 1 second snippets (that can cross trial boundaries). Trialized evaluation matches trialized training, and continuous evaluation is done by streaming up to 1 second of history. Downward arrows indicate points below 0.0. Continuously trained models perform well in both evaluation settings, while models trained on trialized data fail in continuous evaluation.}
   \label{fig:trialized}
 \end{figure}
 
