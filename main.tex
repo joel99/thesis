@@ -17,6 +17,7 @@
 \usepackage[nameinlink,capitalise]{cleveref}
 \usepackage{enumitem}
 \usepackage{xcolor}
+\usepackage{titlesec}
 % Minimal approach - let LaTeX handle TOC normally
 \usepackage{csquotes}
 \usepackage[style=numeric,natbib=true]{biblatex}
@@ -26,6 +27,11 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
 \onehalfspacing
+
+% Custom chapter formatting - remove "Chapter" prefix and newlines
+\titleformat{\chapter}[hang]
+{\normalfont\Large\bfseries}{\thechapter}{1em}{}
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
 % ---------- Title Info ----------
 \newcommand{\proposaltitle}{Deep Learning for Scalable Sensorimotor Brain-Computer Interfaces}
