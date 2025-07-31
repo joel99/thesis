@@ -20,6 +20,7 @@
 \usepackage{titlesec}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
+\usepackage{xparse}
 
 % Minimal approach - let LaTeX handle TOC normally
 \usepackage{csquotes}
@@ -42,9 +43,12 @@
 {\normalfont\Large\bfseries}{\thechapter}{1em}{}
 \titlespacing*{\chapter}{0pt}{0pt}{20pt}
 
+% ---------- Convenience ----------
+\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
+
 % ---------- Title Info ----------
 \newcommand{\proposaltitle}{Deep Learning for Scalable Sensorimotor Brain-Computer Interfaces}
-\newcommand{\authorname}{\textbf{Joel Ye}}
+\newcommand{\authorname}{Joel Ye}
 \newcommand{\department}{
   Neural Computation, Neuroscience Institute \\
   Machine Learning Department, School of Computer Science \\
@@ -52,47 +56,61 @@
 \newcommand{\university}{Carnegie Mellon University \\ Pittsburgh, PA}
 \newcommand{\proposaldate}{July 30, 2025}
 
-% ---------- Committee Macro ----------
-\newcommand{\committee}{
-  \begin{center}
-    \scsurname{Robert}{Gaunt}[({co-chair})] \\
-    \scsurname{Leila}{Wehbe}[({co-chair})] \\
-    \scsurname{Jennifer}{Collinger} \\
-    \scsurname{Aran}{Nayebi} \\
-    \scsurname{Chethan}{Pandarinath}[({Emory University})]
-  \end{center}
+\newcommand{\committee}{%
+  \scsurname{Robert}{Gaunt}[({co-chair})]\\[0.15\baselineskip]
+  \scsurname{Leila}{Wehbe}[({co-chair})]\\[0.15\baselineskip]
+  \scsurname{Jennifer}{Collinger}\\[0.15\baselineskip]
+  \scsurname{Aran}{Nayebi}\\[0.15\baselineskip]
+  \scsurname{Chethan}{Pandarinath}[({Emory University})]%
 }
-
-% ---------- Convenience ----------
-\newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
 
 % ---------- Document ----------
 \begin{document}
 
+% --- title page ---
 \begin{titlepage}
-  \centering
-  {\LARGE \textbf{\proposaltitle}\par}
-  \vspace{1em}
-  {\Large PhD Thesis Proposal\par}
-  {\proposaldate\par}
-  \vspace{2em}
-  {\large \authorname\par}
-  \vspace{2em}
+\setlength{\parindent}{0pt}
+\centering
 
-  {\normalsize \department\par}
-  {\normalsize \university\par}
+% top breathing room
+\vspace*{\stretch{1}}
 
-  \vspace{2em}
+% Title block
+{\LARGE\bfseries \proposaltitle\par}
+\vspace{0.6\baselineskip}
+{\Large \authorname\par}
 
-  {\large Thesis Committee:\par}
-  \vspace{0.5em}
-  \committee
+\vspace{1.5\baselineskip}
+{\large PhD Thesis Proposal\par}
+{\small \proposaldate\par}
 
-  \vfill
-  \vspace{2em}
-  {\small \textit{Submitted in partial fulfillment of the requirements for the Degree of Doctor of Philosophy}\par}
+\vspace{1.2\baselineskip}
+{\normalsize
+\begin{minipage}{0.9\textwidth}\centering
+\department
+\university
+\end{minipage}\par}
+
+% middle breathing room (larger to push committee lower)
+\vspace*{\stretch{2}}
+
+% Committee block
+{\large\bfseries Thesis Committee:\par}
+\vspace{0.4\baselineskip}
+{\normalsize
+\begin{minipage}{0.7\textwidth}\centering
+\setlength{\parskip}{0pt}%
+\committee
+\end{minipage}\par}
+
+% bottom breathing room (largest to anchor footer)
+\vspace*{\stretch{3}}
+
+{\small\itshape
+Submitted in partial fulfillment of the requirements for the Degree of Doctor of Philosophy\par}
+
+\vspace*{\stretch{1}}
 \end{titlepage}
-
 \pagenumbering{roman}
 
 \section*{Abstract}
