@@ -21,10 +21,11 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{xparse}
+\usepackage{mysymbols}
 
 % Minimal approach - let LaTeX handle TOC normally
 \usepackage{csquotes}
-\usepackage[style=numeric,natbib=true,sorting=none]{biblatex}
+\usepackage[style=numeric-comp,natbib=true,sorting=none]{biblatex}
 
 
 \NewDocumentCommand{\scsurname}{m m o}{%
@@ -143,7 +144,6 @@ Sensory feedback is integral to native motor control, and can be provided in iBC
 \tableofcontents
 
 \cleardoublepage
-\pagenumbering{arabic}
 
 % =========================
 % Introduction
@@ -152,22 +152,18 @@ Sensory feedback is integral to native motor control, and can be provided in iBC
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.3\linewidth]{ch1_bci_schema.png}
-  \caption{The role of a computational model is to provide an interface to interact with the underlying domain data. A scalable model is one that provides a tractable strategy to encapsulate and query a growing variety of data.}
-  \label{fig:bci_schema}
+  \includegraphics[width=0.9\linewidth]{ch1_hydra.png}
+  \caption{Models of neural data aim to connect observed neural activity with other variables of interest, but must do so while contending with numerous known and unknownfactors that also modulate neural activity.}
+  % \caption{The role of a computational model is to provide an interface to interact with the underlying domain data. A scalable model is one that provides a tractable strategy to encapsulate and query a growing variety of data.}
+  \label{fig:hydra}
 \end{figure}
 
-Today, neuroscientists seek to study the brain in natural, dynamic environments, and neurotechnology companies are similarly racing to produce a device that will work robustly in the real world. In this increasing scope, modeling neural data begins to resemble a problem of a thousand cuts.
+Today, neuroscientists seek to study the brain in natural, dynamic environments, and neurotechnology companies are similarly racing to produce a device that will work robustly in the real world.
+In this increasing scope, a great variety of factors can affect the neural data that BCI devices collect, and consequently, the performance of the models built on that data. In the best cases, we have some mechanistic account of these factors, such as in our characterization of the physical degradation at the neural-electrode interface~\citep{pandarinath_22_review,bjaanes2024quantifying}. In other cases, well-controlled experiments provide a strong descriptive characterization, as in the case of cognitive states~\citep{cowley2020slow,smoulder2024neural} and body posture~\citep{marino2024posture}. Most often, we lump the remaining factors in the catch-all term of ``context,'' as often arises in studying similar motor behaviors under variable task requirements~\citep{mender23ctx,ma2021ctx,downey2017object}. Designing BCI systems that perform at scale is thus daunting because it should require accounting for all of these known factors and presumably many more unknown ones.
 
-Because we are not mechanistic, we must observe and hope the rules that govern the system we observe in situations that we can tractably analyze ... hold in broader situations. Naturally, any number of factors can break this down, and indeed, break down it does.
+Fortunately, progress in BCIs has rarely hinged on theoretical clarity. The first population vector decoders were enabled by the observation that motor neurons fired reliably according to cosine tuning curves~\citep{Georgopoulos1986}, not from a mechanistic understanding of why they did so. A caricatured workflow for mitigating the myriad impacts of the above factors is to collect data and use this data to update our models. A deeper understanding can support expectations of model robustness, but ultimately, we must design BCIs that recover gracefully when our understanding eventually fails. Likely, the rate of BCI progress will hinge on how quickly our methods can adapt to empirical failures as they arise.
 
-Radically empiricist data-driven....
-
-Today, neuroscientists seek to study the brain in natural, dynamic environments, and neurotechnology companies are similarly racing to produce a device that would work robustly in the real world. The challenge of modeling even a fraction of the brain within this broad scope resists specific definition because it is a problem of a thousand cuts. The neural data we study in iBCIs, namely the spiking activity of single neurons in tiny volumes of human cortex, are affected by innumerable factors. These factors stem from the fact that the recorded neurons are nestled in a highly interconnected biological network that changes on many timescales, and their activity only arrives to our models only after passing through several layers of BCI hardware and software. When these factors are stable, the connection between neural data and behavior can appear remarkably straightforward, motivating the use of simple and interpretable models. However, when these factors shift, unobserved to us, the performance of our models can quickly degrade. Regardless of one’s philosophy on whether we can exhaustively characterize these factors and ultimately understand the data we collect, we undoubtedly should expect to continuously evaluate and update our models as we expand the scope of their application. To minimize the Sisyphean burden of this task, many domains faced with similar challenges have turned to deep neural networks, deprioritizing interpretable theories in favor of a data-centric view of modeling, where the role of the model is merely to capture and interface with the underlying domain data. % ~\figref{fig:schema}.
-
-In this proposal, I aim to establish such a data-driven framework for thinking about sensorimotor BCIs, describing three ways in which we can use deep networks to relate and aggregate BCI datasets. To contextualize this work, I will introduce brain computer interfaces and deep learning’s application to BCIs in turn.
-
-TODO define figref.
+To minimize the Sisyphean burden of this task, many domains faced with similar challenges have turned to deep neural networks, deprioritizing interpretable theories in favor of radical empiricism~\citep{wang2023scientific}. In this proposal, I aim to establish such a data-driven framework for thinking about sensorimotor BCIs, describing three ways in which we can use deep networks to relate and aggregate BCI datasets. To contextualize this work, I will introduce brain computer interfaces and deep learning’s application to BCIs in turn.
 
 \section{Brain-computer interface models}
 \begin{figure}[h]
