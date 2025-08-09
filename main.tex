@@ -163,7 +163,7 @@ Sensory feedback is integral to native motor control, and can be provided in iBC
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.9\linewidth]{ch1_hydra.png}
-  \caption{Models of neural data aim to connect observed neural activity with other variables of interest, but must do so while contending with numerous known and unknown factors that also modulate neural activity.}
+  \caption{Models of neural data must robustly relate neural activity to certain variables of interest while accounting for the influence of numerous other factors that also modulate the same neural activity.}
   % \caption{The role of a computational model is to provide an interface to interact with the underlying domain data. A scalable model is one that provides a tractable strategy to encapsulate and query a growing variety of data.}
   \label{fig:hydra}
 \end{figure}
@@ -178,25 +178,29 @@ To minimize the Sisyphean burden of this task, many domains faced with similar c
 \section{Brain-computer interface models}
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\linewidth]{ch1_bci_loop.png}
+  \includegraphics[width=0.9\linewidth]{ch1_bci_loop.png}
   \caption{Brain-computer interface control loop.}
   \label{fig:bci_loop}
 \end{figure}
 
-A brain-computer interface (BCI) is a system that allows observation and control of neural activity. In the rehabilitative setting, BCIs mainly observe motor cortex to predict movement intentions and control sensory cortex to evoke sensations. By modeling the relationships between these variables, the sensorimotor BCI aims to provide a degree of sensorimotor function and independence for the paralyzed user.
+A brain-computer interface (BCI) is a system that allows observation and control of neural activity. In the rehabilitative setting, for example, BCIs can record from motor cortex to predict movement intentions and can control sensory cortex to evoke sensations. Together, the premise of a sensorimotor BCI is that we might directly relate a user's neural activity with their sensorimotor experience, and thereby restore a degree of sensorimotor function to a paralyzed user.
 
-Over the last two decades, a number of studies have demonstrated the efficacy of human BCIs based on implanted microelectrode arrays (Blackrock Utah arrays). With implants in motor cortex recording neuronal spiking activity, users have achieved control of digital cursors, robotic arms, and language and speech generation~\citep{pandarinath2017high,collinger2013high,willett_21_handwriting,willett_23_speech}. With stimulation of implants in somatosensory cortex, users perceive tactile sensations on their hand that is valuable as an end in itself [values survey, first sensation papers] and can also be utilized functionally for more skillful motor control [flesher and other sensation refs]. The main agendas for BCI algorithms research are to make this existing repertoire more robust and performant, to develop new BCI capabilities, and to deploy convenient systems to users with reduced need for calibration [chethan’s survey?].
+Over the last two decades, a number of studies have demonstrated the efficacy of human BCIs based on implanted microelectrode arrays~\citep{Brandman17Review,pandarinath_22_review}.
+With implants in motor cortex recording neuronal spiking activity, users have achieved control of digital cursors, robotic arms, and language and speech generation~\citep{collinger2013high,willett_23_speech,wairagkar25voice,Pandarinath2017Pointandclick}.
+With stimulation of implants in somatosensory cortex, users perceive tactile sensations on their hand, which is valuable as an end in itself but can also be utilized functionally for more skillful motor control~\citep{flesher2016intracortical,graczyk2024clinical,flesher2021functional,ArmentaSalas2018}.
+BCI algorithms research now unfolds on several axes, naturally including expanding BCI capabilities to new functional milestones~\citep{willsey2024real,wairagkar25voice}, but also making the existing repertoire reliably performant across users and time~\citep{hosman2023months,fan2023plugandplay}, and minimizing user burden for system adoption~\citep{pandarinath_22_review,card2025long}.
 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\linewidth]{ch1_ibci_stability.png}
+  \caption{iBCI stability challenges.}
+  \label{fig:ibci_stability}
+\end{figure}
 To illustrate directions for progress in motor BCIs, we schematize the timeline of BCI performance in [Fig]. Standard BCI models must be initialized with a calibration protocol where experimenters collect by paired neural activity and motor intention labels by prompting the user to behave according to experimental cues. The black arc shows how BCI performance will increase with this calibration period [Makin], but then decline over time due to signal nonstationarities that render the calibration data less relevant [nonstationarity refs]. The burden of the calibration period can be reduced by improving our model priors, and performance can also be preserved through varied recalibration strategies. This model has been executed well by speech BCIs [Willett, Card, Fan]. There, hundreds of calibration sentences are collected on the timescale of an hour, to calibrate an initial language decoder. This decoder provides a powerful enough prior that high performance decoding can be achieved in subsequent BCI sessions with only a few new calibration sentences. As time passes and decoding errors begin to increase, an external language model can provide the weak learning signal needed to maintain high performance decoding for months. A comparably stable and high performance BCI for upper limb control remains to be demonstrated.
 
 Current somsatosensory BCIs are in a pre-paradigmatic state. Plainly, there is no strongly predictive model of what different intracortical microstimulation (ICMS) patterns will do in a particular individual or implant, so the analogous calibration process is to collect perceptual reports as many different stimuli as fit within experimental time constraints. The most studied parameterization of ICMS is under fixed frequency and amplitude pulse trains on single electrodes. Under this parameterization, the evoked sensation is highly stable over time, but the precise quality and intensity of the sensation can vary across days [citation needed]. Worse, the impacts of stimulation frequency and amplitude on these sensations will vary across stimulation electrodes [Hughes]. One promising development towards more precise and reliable ICMS is the principle of biomimicry. Biomimetic ICMS motivates the design of stimulation pulses evoke neural responses resembling those of natural touch, rather than the merely convenient design space of fixed frequency and amplitude pulse trains. However, this aspiration is hamstringed on both ends, as it is difficult both to observe the neural response to ICMS and to observe the neural response to natural touch in BCI participants who typically have impaired somatosensory pathways. Current demonstrations of biomimetic ICMS have compromised by matching coarse, subject-general features of natural touch and assuming the neural response to ICMS is proportional to either frequency or amplitude inputs. Realizing biomimetic ICMS in higher fidelity through local neural activity, and thereby presumably improving somatosensory BCI efficacy overall, will require addressing both these assumptions.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{ch1_ibci_stability.png}
-  \caption{iBCI stability challenges.}
-  \label{fig:ibci_stability}
-\end{figure}
 
 Current somatosensory BCIs are in a pre-paradigmatic state. Plainly, there is no strongly predictive model of what different ICMS patterns will do in a particular individual or implant, so the analogous calibration process is to collect perceptual reports for as many different stimuli as fit within experimental time constraints. The most studied parameterization of ICMS is under fixed-frequency and fixed-amplitude pulse trains on single electrodes. Under this parameterization, the evoked sensation is highly stable over time, but the precise quality and intensity of the sensation can vary across days \citep{citationNeeded}. Worse, the impacts of stimulation frequency and amplitude on these sensations will vary across stimulation electrodes \citep{hughesPlaceholder}. One promising development towards more precise and reliable ICMS is the principle of biomimicry, which motivates the design of stimulation pulses that evoke neural responses resembling those of natural touch. Realizing biomimetic ICMS in higher fidelity through local neural activity will require addressing assumptions on both the neural and perceptual sides.
 
