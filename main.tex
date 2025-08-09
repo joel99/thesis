@@ -3,7 +3,8 @@
 % ---------- Packages ----------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage{times}
+\usepackage{mathptmx}
 \usepackage{setspace}
 \usepackage{geometry}
 \geometry{letterpaper, margin=1in}
@@ -11,6 +12,9 @@
 \graphicspath{{figures/}}
 \usepackage{caption}
 \usepackage{subcaption}
+% ML conference style captions
+\captionsetup{font=small, labelfont=bf, skip=8pt}
+\captionsetup[sub]{font=footnotesize, labelfont=bf}
 \usepackage{booktabs}
 \usepackage{amsmath, amssymb}
 \usepackage[hidelinks]{hyperref}
@@ -18,8 +22,6 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{titlesec}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
 \usepackage{xparse}
 \usepackage{mysymbols}
 
@@ -37,12 +39,20 @@
 
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
-\onehalfspacing
+\setstretch{1.15}
 
 % Custom chapter formatting - remove "Chapter" prefix and newlines
 \titleformat{\chapter}[hang]
 {\normalfont\Large\bfseries}{\thechapter}{1em}{}
-\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\titlespacing*{\chapter}{0pt}{0pt}{15pt}
+
+% Tighter section spacing
+\titlespacing*{\section}{0pt}{12pt plus 2pt minus 2pt}{8pt plus 2pt minus 2pt}
+\titlespacing*{\subsection}{0pt}{10pt plus 2pt minus 2pt}{6pt plus 1pt minus 1pt}
+
+% ML conference style paragraph formatting
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
 
 % ---------- Convenience ----------
 \newcommand{\todo}[1]{\textcolor{red}{TODO: #1}}
@@ -153,7 +163,7 @@ Sensory feedback is integral to native motor control, and can be provided in iBC
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.9\linewidth]{ch1_hydra.png}
-  \caption{Models of neural data aim to connect observed neural activity with other variables of interest, but must do so while contending with numerous known and unknownfactors that also modulate neural activity.}
+  \caption{Models of neural data aim to connect observed neural activity with other variables of interest, but must do so while contending with numerous known and unknown factors that also modulate neural activity.}
   % \caption{The role of a computational model is to provide an interface to interact with the underlying domain data. A scalable model is one that provides a tractable strategy to encapsulate and query a growing variety of data.}
   \label{fig:hydra}
 \end{figure}
