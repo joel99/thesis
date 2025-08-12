@@ -1,3 +1,5 @@
+# Do not ignore main.pdf (keep it tracked)
+!main.pdf
 ref/
 *.pdf
 # LaTeX auxiliary files
